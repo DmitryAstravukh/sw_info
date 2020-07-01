@@ -40,7 +40,8 @@ export default class ItemList extends React.Component{
 
     const errorMessage = error ? <Error /> : null;
     const spiner = loading ? <Spinner /> : null;
-    const content = hasData ? <PeopleList peopleList={peopleList} /> : null;
+    const content = hasData ? <PeopleList peopleList={peopleList} 
+                                          onPersonSelected={this.props.onPersonSelected}/> : null;
 
     return(
       <div className={s.all_person_container}>
@@ -53,11 +54,12 @@ export default class ItemList extends React.Component{
   }
 }
 
-const PeopleList = ({peopleList}) => {
+const PeopleList = ({peopleList, onPersonSelected}) => {
   const items = peopleList.map(({id, name}) => {
     return (
       <li className="list-group-item"
-          key={id}>
+          key={id}
+          onClick={() => onPersonSelected(id)}>
         {name}
       </li>
     )
