@@ -12,7 +12,6 @@ export default class App extends React.Component{
   }
 
   onPersonSelected = (id) => {
-    console.log(id);
     this.setState({
       selectedPerson: id
     })
@@ -24,10 +23,10 @@ export default class App extends React.Component{
         <Header/>
         <div className={s.container}>
           <RandomPlanet />
-          <div className="col-6">
+          <div className="col-4">
             <ItemList onPersonSelected={this.onPersonSelected} />
           </div>
-          <div className="col-6">
+          <div className="col-4">
             <PersonDetails selectedPerson={this.state.selectedPerson}/>
           </div>
         </div>

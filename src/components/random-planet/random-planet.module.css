@@ -2,8 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
   margin-top: 5px;
   min-height: 150px;
   margin-bottom: 30px;
@@ -12,8 +10,10 @@
 
 .data{
   display: flex;
-  width: 100%;
+  width: 500px;
   height: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .img{
@@ -25,6 +25,10 @@
   height: 100%;
   object-fit: contain;
   border-radius: 10px;
+}
+
+.name{
+  margin-left: 20px;
 }
 
 /*---------- SPINNER ------*/
