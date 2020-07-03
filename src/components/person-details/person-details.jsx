@@ -32,16 +32,20 @@ export default class PersonDetails extends React.Component{
   }
 
   updatePerson = () => {
+    this.setState({ //some bullshit
+      loading: true 
+    });
+
     const {selectedPerson} = this.props;
-    console.log(selectedPerson);
     if(!selectedPerson){ 
       return;
-    } 
+    }
+    
     this.swapi.getPerson(selectedPerson)
       .then(person => {
-        this.setState({
-          loading: false, 
-          person 
+        this.setState({ 
+          person,
+          loading: false 
         })
       })
   }
@@ -49,7 +53,11 @@ export default class PersonDetails extends React.Component{
   render(){
 
     if(!this.state.person) {
-      return <span>Select person from Person List</span>
+      return (
+        <div className="card d-flex">
+          <span className={s.not_select_person}>Select person from Person List</span>
+        </div>
+      )
     }
 
     const {person, loading, error} = this.state;
@@ -61,11 +69,11 @@ export default class PersonDetails extends React.Component{
 
 
     return(
-      <React.Fragment>
+      <div className={s.person_details}>
         {errorMessage}
         {spiner}
         {content}
-      </React.Fragment>
+      </div>
     )
   }
 }
@@ -74,7 +82,7 @@ const Card = ({item}) => {
   const {id, name, gender, birthYear, eyeColor} = item;
 
   return(
-    <div className="card d-flex">
+    <div className="card d-flex w-100">
       <img className={s.card_img}
             src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
             alt="character" />

@@ -1,3 +1,8 @@
+.person_details{
+  display: flex;
+  justify-content: center;
+}
+
 .card_img{
   max-height: 200px;
   width: 100%;
@@ -14,4 +19,8 @@
 .card_title{
   font-size: 24px;
   color: coral;
+}
+
+.not_select_person{
+  padding: 15px 10px;
 }
