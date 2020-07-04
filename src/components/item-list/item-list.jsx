@@ -7,10 +7,8 @@ import Error from './../error';
 
 export default class ItemList extends React.Component{
   
-  swapi = new SwapiService();
-
   state = {
-    peopleList: null,
+    itemList: null,
     loading: true,
     error: false
   }
@@ -23,25 +21,31 @@ export default class ItemList extends React.Component{
   }
 
   componentDidMount(){
-    this.swapi.getAllPeople()
-      .then(peopleList => {    
+    const {getData} = this.props;
+    getData()
+      .then(itemList => {    
         this.setState({
           loading: false,
-          peopleList
+          itemList
         })
       })
       .catch(this.onError)
   }
 
+  
+
   render(){
-    const {peopleList, loading, error} = this.state;
+    
+    const {itemList, loading, error} = this.state;
   
     const hasData = !(loading || error);
 
     const errorMessage = error ? <Error /> : null;
     const spiner = loading ? <Spinner /> : null;
-    const content = hasData ? <PeopleList peopleList={peopleList} 
-                                          onPersonSelected={this.props.onPersonSelected}/> : null;
+    const content = hasData ? <List itemList={itemList} 
+                                    onItemSelected={this.props.onItemSelected}>
+                                {this.props.children}
+                              </List> : null;
 
     return(
       <div className={s.all_person_container}>
@@ -54,13 +58,15 @@ export default class ItemList extends React.Component{
   }
 }
 
-const PeopleList = ({peopleList, onPersonSelected}) => {
-  const items = peopleList.map(({id, name}) => {
+const List = ({itemList, onItemSelected, children}) => {
+  const items = itemList.map((item) => {
+    const {id} = item;
+    const label = children(item);
     return (
       <li className="list-group-item"
           key={id}
-          onClick={() => onPersonSelected(id)}>
-        {name}
+          onClick={() => onItemSelected(id)}>
+        {label}
       </li>
     )
   })

@@ -19,7 +19,7 @@ export default class PersonDetails extends React.Component{
   }
 
   componentDidUpdate(prevProps){
-    if(this.props.selectedPerson !== prevProps.selectedPerson){
+    if(this.props.selectedItem !== prevProps.selectedItem){
       this.updatePerson();
     }
   }
@@ -36,12 +36,12 @@ export default class PersonDetails extends React.Component{
       loading: true 
     });
 
-    const {selectedPerson} = this.props;
-    if(!selectedPerson){ 
+    const {selectedItem} = this.props;
+    if(!selectedItem){ 
       return;
     }
     
-    this.swapi.getPerson(selectedPerson)
+    this.swapi.getPerson(selectedItem)
       .then(person => {
         this.setState({ 
           person,
