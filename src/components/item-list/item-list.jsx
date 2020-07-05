@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './item-list.module.css';
-import SwapiService from './../../services/swapi_service';
 import Spinner from './../spinner';
 import Error from './../error';
 

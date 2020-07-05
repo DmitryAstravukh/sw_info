@@ -1,10 +1,10 @@
 import React from 'react';
-import s from './page.module.css';
-import PersonDetails from '../person-details';
+// import s from './page.module.css';
+import ItemDetails from '../item-details/item-details';
 import ItemList from '../item-list';
 import ErrorBoundary from '../error-boundary/error-boundary';
 
-export default class Page extends React.Component{
+export default class Row extends React.Component{
   
   state = {
     selectedItem: null
@@ -29,7 +29,11 @@ export default class Page extends React.Component{
         </div>
         <div className="col-7 col-sm-6 col-md-5 col-lg-4">
           <ErrorBoundary>
-            <PersonDetails selectedItem={this.state.selectedItem}/>
+            <ItemDetails selectedItem={this.state.selectedItem}
+                         getItemData={this.props.getItemData}
+                         getImgUrl={this.props.getImgUrl}>
+              {this.props.children}
+            </ItemDetails>
           </ErrorBoundary>
         </div>
       </div>

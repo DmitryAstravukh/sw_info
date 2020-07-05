@@ -1,4 +1,4 @@
-.person_details{
+.item_details{
   display: flex;
   justify-content: center;
 }
@@ -21,6 +21,6 @@
   color: coral;
 }
 
-.not_select_person{
+.not_select_item{
   padding: 15px 10px;
 }
