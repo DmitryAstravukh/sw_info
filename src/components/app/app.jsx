@@ -29,6 +29,7 @@ export default class App extends React.Component{
         <Header/>
         <div className={s.container}>
           <RandomPlanet />
+          
           <Row getData={this.swapi.getAllPeople}
                 getItemData={this.swapi.getPerson}
                 getImgUrl={this.swapi.getPersonImg}
