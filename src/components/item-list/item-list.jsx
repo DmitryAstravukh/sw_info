@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './item-list.module.css';
 import withData from '../hoc/with-data';
+import SwapiService from '../../services/swapi_service';
 
 
 const ItemList = (props) => {
@@ -26,28 +27,6 @@ const ItemList = (props) => {
   )    
   
 }
+const swapi = new SwapiService();
 
-// const List = ({data, onItemSelected, children}) => {
-//   const items = data.map((item) => {
-//     const {id} = item;
-//     const label = children(item);
-//     return (
-//       <li className="list-group-item"
-//           key={id}
-//           onClick={() => onItemSelected(id)}>
-//         {label}
-//       </li>
-//     )
-//   })
-
-//   return (
-//     <ul className="item-list list-group w-100 h-100">
-//       {items}
-//     </ul>
-//   )
-// }
-
-
-//export default ItemList;
-
-export default withData(ItemList);
+export default withData(ItemList, swapi.getAllPeople);
