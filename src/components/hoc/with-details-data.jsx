@@ -3,7 +3,7 @@ import Spinner from '../spinner';
 import Error from '../error';
 
 
-const withDetailsData = (View) => {
+const withDetailsData = (View, getData, getImgUrl) => {
   return class extends React.Component{
     
     state = {
@@ -34,12 +34,12 @@ const withDetailsData = (View) => {
         loading: true 
       });
   
-      const {selectedItem, getItemData} = this.props;
+      const {selectedItem} = this.props;
       if(!selectedItem){ 
         return;
       }
       
-      getItemData(selectedItem)
+      getData(selectedItem)
         .then(item => {
           this.setState({ 
             item,
@@ -64,7 +64,7 @@ const withDetailsData = (View) => {
       const errorMessage = error ? <Error /> : null;
       const spiner = loading ? <Spinner /> : null;
       const content = hasData ? <View item={item} 
-                                      getImgUrl={this.props.getImgUrl}>
+                                      getImgUrl={getImgUrl}>
                                   {this.props.children}
                                 </View> : null;
   

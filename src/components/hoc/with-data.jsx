@@ -19,7 +19,6 @@ const withData = (View, getData) => {
     }
 
     componentDidMount(){
-      //const {getData} = this.props;
       getData()
         .then(data => {    
           this.setState({

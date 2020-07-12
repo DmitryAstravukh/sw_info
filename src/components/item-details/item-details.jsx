@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './item-details.module.css';
-import withDetailsData from '../hoc/with-details-data';
 
 const Record = ({item, field, label}) => {
   return(
@@ -39,4 +38,4 @@ const ItemDetails = ( props ) => {
 }
 
 
-export default withDetailsData(ItemDetails);
+export default ItemDetails;

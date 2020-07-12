@@ -7,6 +7,16 @@ import Error from '../error';
 import {Record} from '../item-details/item-details';
 import SwapiService from '../../services/swapi_service';
 
+import {
+  PersonsList,
+  PlanetsList,
+  StarshipsList,
+
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails
+} from './../sw-components';
+
 export default class App extends React.Component{
 
   swapi = new SwapiService();
@@ -24,13 +34,43 @@ export default class App extends React.Component{
       return <Error />
     }
 
+    const personList = <PersonsList>{item => `${item.id}. ${item.name}`}</PersonsList>;
+    const personDetails = <PersonDetails>
+                            <Record field="gender" label="Gender"/>
+                            <Record field="birthYear" label="Birth Year"/>
+                            <Record field="eyeColor" label="Eye Color"/>
+                          </PersonDetails>;
+
+    const planetList = <PlanetsList>{item => `${item.id}. ${item.name}`}</PlanetsList>;
+    const planetDetails = <PlanetDetails>
+                            <Record field="population" label="Population"/>
+                            <Record field="rotationPeriod" label="Rotation Period"/>
+                            <Record field="diameter" label="Diameter"/>
+                          </PlanetDetails>
+
+    const starshipList = <StarshipsList>{item => `${item.id}. ${item.name}`}</StarshipsList>;
+    const starshipDetails = <StarshipDetails>
+                              <Record field="model" label="Model"/>
+                              <Record field="manufacturer" label="Manufacturer"/>
+                              <Record field="costInCredits" label="Cost In Credits"/> 
+                              <Record field="length" label="Length"/> 
+                              <Record field="crew" label="Crew"/> 
+                              <Record field="passengers" label="Passengers"/> 
+                              <Record field="cargoCapacity" label="Cargo Capacity"/> 
+                            </StarshipDetails>
+
     return(
       <React.Fragment>
         <Header/>
         <div className={s.container}>
           <RandomPlanet />
+
+          <Row left={personList} right={personDetails} />
+          <Row left={planetList} right={planetDetails} />
+          <Row left={starshipList} right={starshipDetails} />
           
-          <Row getData={this.swapi.getAllPeople}
+          
+          {/* <Row getData={this.swapi.getAllPeople}
                 getItemData={this.swapi.getPerson}
                 getImgUrl={this.swapi.getPersonImg}
                 renderItems={item => `${item.id}. ${item.name}`}>
@@ -62,7 +102,7 @@ export default class App extends React.Component{
             <Record field="crew" label="Crew"/> 
             <Record field="passengers" label="Passengers"/> 
             <Record field="cargoCapacity" label="Cargo Capacity"/> 
-          </Row>
+          </Row> */}
 
         </div>
       </React.Fragment>
