@@ -9,7 +9,7 @@ const ItemList = (props) => {
     const {id} = item;
     const label = children(item);
     return (
-      <li className="list-group-item"
+      <li className={`list-group-item ${s.interaction}`}
           key={id}
           onClick={() => onItemSelected(id)}>
         {label}
