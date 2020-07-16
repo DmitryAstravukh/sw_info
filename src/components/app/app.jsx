@@ -32,7 +32,7 @@ export default class App extends React.Component{
       <ErrorBoundary>
         <Header/>
         <div className={s.container}>
-          <RandomPlanet />
+          <RandomPlanet updateInterval={15000}/>
 
           <PeoplePage />
           <PlanetsPage />
