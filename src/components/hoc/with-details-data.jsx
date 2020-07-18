@@ -34,7 +34,7 @@ const withDetailsData = (View, getData, getImgUrl) => {
         loading: true 
       });
   
-      const {selectedItem} = this.props;
+      const { selectedItem } = this.props;
       if(!selectedItem){ 
         return;
       }
@@ -53,7 +53,7 @@ const withDetailsData = (View, getData, getImgUrl) => {
         const spanStyle = { padding: '15px 10px' };
         return (
           <div className="card d-flex">
-            <span style={spanStyle}>Select person from Person List</span>
+            <span style={spanStyle}>Select item</span>
           </div>
         )
       }

@@ -3,10 +3,13 @@ import Row from '../row';
 
 import { Record } from '../item-details/item-details';
 import { PlanetsList, PlanetDetails } from './../sw-components';
+import { withRouter } from 'react-router-dom';
 
-const PlanetsPage = () => {
-  const planetList = <PlanetsList>{item => `${item.id}. ${item.name}`}</PlanetsList>;
-  const planetDetails = <PlanetDetails>
+const PlanetsPage = ({ history, match }) => {
+  const planetList = <PlanetsList onItemSelected={(id) => history.push(id)}>
+                       {item => `${item.id}. ${item.name}`}
+                     </PlanetsList>;
+  const planetDetails = <PlanetDetails selectedItem={match.params.id}>
                             <Record field="population" label="Population"/>
                             <Record field="rotationPeriod" label="Rotation Period"/>
                             <Record field="diameter" label="Diameter"/>
@@ -16,5 +19,5 @@ const PlanetsPage = () => {
   )
 }
 
-export default PlanetsPage;
+export default withRouter(PlanetsPage);
 

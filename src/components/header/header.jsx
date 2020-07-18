@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './header.module.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   /**
@@ -7,12 +8,11 @@ const Header = () => {
     if(important) itemClassName = [itemClassName, s.important].join(' ');
    */
 
-  let navItemClass = `nav-item`;
   return(
     <header>
       <nav className="navbar navbar-expand-lg">
 
-        <a className={`navbar-brand ${s.project_name}`} href="/">Star Wars Info</a>
+        <Link className={`navbar-brand ${s.project_name}`} to="/">Star Wars Info</Link>
 
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className={s.burger}><div></div><div></div><div></div></span>
@@ -20,14 +20,14 @@ const Header = () => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className={`${navItemClass} active`}>
-              <a className="nav-link" href="/people">People</a>
+            <li className='nav-item'>
+              <Link className="nav-link" to="/people/">People</Link>
             </li>
-            <li className={`${navItemClass}`}>
-              <a className="nav-link" href="/planets">Planets</a>
+            <li className='nav-item'>
+              <Link className="nav-link" to="/planets/">Planets</Link>
             </li>
-            <li className={`${navItemClass}`}>
-              <a className="nav-link" href="/starships">Starships</a>
+            <li className='nav-item'>
+              <Link className="nav-link" to="/starships/">Starships</Link>
             </li>
           </ul>
         </div>

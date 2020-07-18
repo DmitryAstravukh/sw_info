@@ -3,18 +3,21 @@ import Row from '../row';
 
 import { Record } from '../item-details/item-details';
 import { PersonsList, PersonDetails } from './../sw-components';
+import { withRouter } from 'react-router-dom';
 
-const PeoplePage = () => {
-  const personList = <PersonsList>{item => `${item.id}. ${item.name}`}</PersonsList>;
-  const personDetails = <PersonDetails>
-                        <Record field="gender" label="Gender"/>
-                        <Record field="birthYear" label="Birth Year"/>
-                        <Record field="eyeColor" label="Eye Color"/>
-                      </PersonDetails>;
+const PeoplePage = ({ history, match }) => {
+  const personList = <PersonsList onItemSelected={(id) => history.push(id)}>
+                        {item => `${item.id}. ${item.name}`}
+                      </PersonsList>;
+  const personDetails = <PersonDetails selectedItem={match.params.id}>
+                          <Record field="gender" label="Gender"/>
+                          <Record field="birthYear" label="Birth Year"/>
+                          <Record field="eyeColor" label="Eye Color"/>
+                        </PersonDetails>;
   return (
     <Row left={personList} right={personDetails} />
   )
 }
 
-export default PeoplePage;
+export default withRouter(PeoplePage);
 

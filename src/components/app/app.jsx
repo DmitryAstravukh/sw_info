@@ -9,6 +9,7 @@ import ErrorBoundary from '../error-boundary/error-boundary';
 
 
 import { PeoplePage, PlanetsPage, StarshipsPage } from './../pages';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 export default class App extends React.Component{
 
@@ -30,15 +31,17 @@ export default class App extends React.Component{
 
     return(
       <ErrorBoundary>
-        <Header/>
-        <div className={s.container}>
-          <RandomPlanet updateInterval={15000}/>
+        <BrowserRouter>
+          <Header/>
+          <div className={s.container}>
+            <RandomPlanet updateInterval={15000}/>
 
-          <PeoplePage />
-          <PlanetsPage />
-          <StarshipsPage />
-          
-        </div>
+            <Route path="/people/:id?" component={PeoplePage} />
+            <Route path="/planets/:id?" component={PlanetsPage} />
+            <Route path="/starships/:id?" component={StarshipsPage} />
+            
+          </div>
+        </BrowserRouter>
       </ErrorBoundary>
     )
   }
