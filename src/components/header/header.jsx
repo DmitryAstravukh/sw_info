@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './header.module.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
   /**
@@ -21,13 +21,22 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className='nav-item'>
-              <Link className="nav-link" to="/people/">People</Link>
+              <NavLink 
+                className="nav-link"
+                activeClassName="active" 
+                to="/people/">People</NavLink>
             </li>
             <li className='nav-item'>
-              <Link className="nav-link" to="/planets/">Planets</Link>
+              <NavLink 
+                className="nav-link" 
+                activeClassName="active" 
+                to="/planets/">Planets</NavLink>
             </li>
             <li className='nav-item'>
-              <Link className="nav-link" to="/starships/">Starships</Link>
+              <NavLink 
+                className="nav-link" 
+                activeClassName="active" 
+                to="/starships/">Starships</NavLink>
             </li>
           </ul>
         </div>

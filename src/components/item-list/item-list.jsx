@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import s from './item-list.module.css';
 
 
-const ItemList = (props) => {
+const ItemList = ({ data, onItemSelected, children }) => {
   
-  const {data, onItemSelected, children} = props;
   const items = data.map((item) => {
-    const {id} = item;
+    const { id } = item;
     const label = children(item);
     return (
       <li className={`list-group-item ${s.interaction}`}
-          key={id}
-          onClick={() => onItemSelected(id)}>
+          key={ id }
+          onClick={() => { onItemSelected(id) }}>
         {label}
       </li>
     )

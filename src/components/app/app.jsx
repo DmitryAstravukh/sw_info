@@ -9,7 +9,7 @@ import ErrorBoundary from '../error-boundary/error-boundary';
 
 
 import { PeoplePage, PlanetsPage, StarshipsPage } from './../pages';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 export default class App extends React.Component{
 
@@ -36,9 +36,14 @@ export default class App extends React.Component{
           <div className={s.container}>
             <RandomPlanet updateInterval={15000}/>
 
-            <Route path="/people/:id?" component={PeoplePage} />
-            <Route path="/planets/:id?" component={PlanetsPage} />
-            <Route path="/starships/:id?" component={StarshipsPage} />
+            <Switch>
+              <Route path="/"exact render={() => <h2 style={{color: "#ffe300"}}>Welcome</h2>} />
+              <Route path="/people/:id?" component={PeoplePage} />
+              <Route path="/planets/:id?" component={PlanetsPage} />
+              <Route path="/starships/:id?" component={StarshipsPage} />
+
+              <Route render={() => <h2 style={{color: "red"}}>Page not found</h2>} />
+            </Switch>    
             
           </div>
         </BrowserRouter>
